@@ -1,0 +1,42 @@
+---
+title: "myPackage"
+author: "Davis Nuzzi"
+date: "`r Sys.Date()`"
+output: 
+  html_document:
+    toc: yes
+    toc_float: yes
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Functions and data set
+
+```{r}
+library(myPackage)
+
+# myncurve function
+myPackage:::myncurve(1, 2, 3)
+
+
+# myclt function
+myPackage:::myclt(30, 1000)
+
+
+# mymaxlik function
+logbin=function(x,param) log(dbinom(x,prob = param, size = 20))
+
+myPackage:::mymaxlik(x = c(3,3,4,3,4,5,5,4), param = seq(0, 1, length = 1000),lfun = logbin, xlab = expression(pi), main = "Binomial", cex.main = 2)
+
+
+# myci function
+myPackage:::myci(c(1, 2, 3, 4, 5))
+
+
+# fire database
+myFire <- myPackage::fire
+myFire
+
+```
